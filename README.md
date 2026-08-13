@@ -315,7 +315,7 @@ This project is intended for internal/research use. Please respect the licenses 
 
 **Acknowledgements:**
 - [Unitree Robotics](https://www.unitree.com/) — Go2 robot platform
-- [Legion1581_Go2 Portal](https://github.com/legion1581)
+- [Legion1581](https://github.com/legion1581)
 - [Gradio](https://gradio.app/) — Web UI framework
 - [Nav2](https://nav2.ros.org/) — ROS 2 navigation stack
 - [LiteLLM](https://github.com/BerriAI/litellm) — Unified LLM API layer
