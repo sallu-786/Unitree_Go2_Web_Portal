@@ -201,7 +201,7 @@ load_dotenv()
 AZURE_API_KEY = os.getenv("AZURE_API_KEY")
 ```
 
-### 6. Run the MCP portal
+### 6. Run the portal
 
 ```bash
 python main.py
@@ -258,7 +258,7 @@ All settings live in `config.py`. Key groups:
 
 ---
 
-## Running the Portal
+## Running the MCP Portal
 
 ```bash
 python main.py
