@@ -313,8 +313,9 @@ LLM_PROMPT = "Describe the scene and highlight any hazards."
 
 This project is intended for internal/research use. Please respect the licenses of its third-party dependencies, including Gradio, ROS 2, the Unitree SDK, and the MCP SDK. See the repository's [`LICENSE`](https://github.com/sallu-786/Unitree_Go2_Web_Portal/blob/main/LICENSE) file for details.
 
-**Built on top of:**
+**Acknowledgements:**
 - [Unitree Robotics](https://www.unitree.com/) — Go2 robot platform
+- [Legion1581_Go2 Portal](https://github.com/legion1581)
 - [Gradio](https://gradio.app/) — Web UI framework
 - [Nav2](https://nav2.ros.org/) — ROS 2 navigation stack
 - [LiteLLM](https://github.com/BerriAI/litellm) — Unified LLM API layer
