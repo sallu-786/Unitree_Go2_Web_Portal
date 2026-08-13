@@ -13,7 +13,7 @@ A browser-based control and monitoring portal for the **Unitree Go2** robot dog,
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Configuration Reference](#configuration-reference)
-- [Running the Portal](#running-the-portal)
+- [Running the MCP Portal](#running-the-mcp-portal)
 - [MCP Server & LLM Agent Integration](#mcp-server--llm-agent-integration)
 - [Accessing the Portal](#accessing-the-portal)
 - [Extending the Project](#extending-the-project)
@@ -201,7 +201,7 @@ load_dotenv()
 AZURE_API_KEY = os.getenv("AZURE_API_KEY")
 ```
 
-### 6. Run the portal
+### 6. Run the MCP portal
 
 ```bash
 python main.py
