@@ -301,9 +301,6 @@ MODELS = {
 |---|---|
 | Local (same machine) | `http://localhost:7860` |
 | LAN (other devices) | `http://<robot-host-ip>:7860` |
-| PWA (install on mobile) | Open in a mobile browser → "Add to Home Screen" |
-
-The portal is configured as a **Progressive Web App**, so it can be installed on a phone or tablet for a near-native experience — handy for field use where you don't want a full desktop browser open.
 
 ---
 
