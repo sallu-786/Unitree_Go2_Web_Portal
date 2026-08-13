@@ -3,43 +3,6 @@
 A browser-based control and monitoring portal for the **Unitree Go2** robot dog, built with [Gradio](https://gradio.app/) and ROS2 keeping it 100% pythonic. The portal streams live camera feeds, displays sensor telemetry, provides remote navigation controls, supports autonomous waypoint missions, and integrates LLM-powered scene description.
 
 
-## 🗂️ Project Structure
-
-```
-.
-├── main.py                   # App entry point — ROS2 init, Gradio launch
-├── config.py                 # All settings (topics names, LLM config, Rosbridge connection settings, UI flags)
-├── server.py                 # MCP Server that allows LLM Agent access to all of Ros2 topics and services
-├── web_backend/
-│    └── action_sub.py        # ROS2-style subscriber that allows using Go2 SportMode actions.
-│    └── audio_sub.py         # Access Speaker of Go2
-│    └── bm_status.py         # Battery, Motor and IMU (roll,pitch,yaw) status 
-│    └── camera.py            # Access to Main front camera of Unitree Go2 
-│    └── camera_rs.py         # Access to Main Realsense camera of Attached to Unitree Go2 (make sure Realsense ros2 pkg is installed on Go2) 
-│   └── data_stream.py        # ROS2 subscribers, publishers, LLM logic, Map generator
-├── web_frontend/
-│   ├── index.py              # Main tab UI (camera, map, telemetry)
-│   ├── action.py             # Actions tab UI (waypoints, missions)
-│   ├── dev.py                # Development tab UI
-│   └── style.css             # Custom CSS styles
-├── data/
-│   ├── yolo/best2.pt             # YOLO model weights
-│   └── waypoints/waypoints.json  # Saved navigation waypoints
-│   └── sounds/                   # Uploaded audio files for robot playback
-```
-
-
-
-# 🤖 Unitree Go2 Web Portal
-
-**A browser-based control, monitoring, and AI-agent interface for the Unitree Go2 quadruped robot — built on Gradio + ROS 2, with an integrated Model Context Protocol (MCP) server.**
-
-> Repo: [sallu-786/Unitree_Go2_Web_Portal](https://github.com/sallu-786/Unitree_Go2_Web_Portal)
-
-This project turns a Unitree Go2 into something you can watch, drive, and talk to from any browser on the same network — phone, tablet, or laptop — while also exposing the robot's full ROS 2 topic/service surface to LLM agents (ChatGPT, Ollama models, or any MCP-compatible client) so they can inspect telemetry and issue commands on your behalf.
-
----
-
 ## Table of Contents
 
 
