@@ -1,7 +1,7 @@
 # 🤖 MCP Web Portal — Unitree Go2 Robot Control Interface
 
 A browser-based control and monitoring portal for the **Unitree Go2** robot dog, built with [Gradio](https://gradio.app/) and ROS2 keeping it 100% pythonic. The portal streams live camera feeds, displays sensor telemetry, provides remote navigation controls, supports autonomous waypoint missions, and integrates LLM-powered scene description.
-
+![Portal Screenshot](github_media/portal.png)
 
 ## Table of Contents
 
