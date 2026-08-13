@@ -43,35 +43,7 @@ A browser-based control and monitoring portal for the **Unitree Go2** robot dog,
 
 ## Architecture
 
-```
-┌─────────────────────┐        ROS 2 / DDS or WebRTC        ┌──────────────────┐
-│   Unitree Go2 Robot   │◄────────────────────────────────►│  main.py (host)   │
-│ (cameras, IMU, LIDAR,│        rosbridge (port 9090)        │  - ROS 2 executor │
-│  sport-mode, motors)  │                                     │  - Gradio server  │
-└─────────────────────┘                                     └────────┬─────────┘
-                                                                        │
-                       ┌────────────────────────────────────────────────┤
-                       │                                                 │
-              ┌────────▼────────┐                              ┌────────▼────────┐
-              │  web_frontend/   │                              │   server.py      │
-              │  Gradio tabs:    │                              │   MCP server      │
-              │  index / action  │                              │   (tools → topics │
-              │  / dev           │                              │   & services)     │
-              └────────┬────────┘                              └────────┬────────┘
-                       │                                                 │
-              ┌────────▼─────────────────────────────────────┐         │
-              │  web_backend/                                  │         │
-              │  camera.py, camera_rs.py, bm_status.py,        │         │
-              │  action_sub.py, audio_sub.py, data_stream.py   │         │
-              │  (ROS 2 pub/subs, YOLO inference, map builder, │         │
-              │   LiteLLM scene-description calls)             │         │
-              └──────────────────────────────────────────────┘         │
-                                                                          │
-                                                          ┌───────────────▼───────────────┐
-                                                          │  LLM Agent (ChatGPT / Ollama)  │
-                                                          │  connects as an MCP client     │
-                                                          └────────────────────────────────┘
-```
+![Architecture Diagram](github_media/architecture.png)
 
 The robot connects to the host machine via **rosbridge** (default `127.0.0.1:9090`), using either the **DDS** or **WebRTC** transport mode (`MODE` in `config.py`). All ROS 2 nodes are registered onto a shared executor in `main.py`, and their live data is surfaced to both the Gradio UI and the MCP server from the same `DataStream` object in `web_backend/data_stream.py`.
 
