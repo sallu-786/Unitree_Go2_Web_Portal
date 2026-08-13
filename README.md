@@ -17,7 +17,6 @@ A browser-based control and monitoring portal for the **Unitree Go2** robot dog,
 - [MCP Server & LLM Agent Integration](#mcp-server--llm-agent-integration)
 - [Accessing the Portal](#accessing-the-portal)
 - [Extending the Project](#extending-the-project)
-- [Troubleshooting](#troubleshooting)
 - [License & Acknowledgements](#license--acknowledgements)
 
 ---
@@ -120,8 +119,8 @@ The robot connects to the host machine via **rosbridge** (default `127.0.0.1:909
 
 Based on the project's pinned `requirements.txt`, the portal is built on:
 
-- **Robotics / middleware:** ROS 2 (`rclpy`, `ros2cli` tooling), `rosbridge-suite` for the WebSocket bridge to the robot, `unitree_go`/`unitree_api`/`unitree_hg` message packages, and the [`unitree_sdk2_python`](https://github.com/unitreerobotics/unitree_sdk2_python) SDK (installed as an editable Git dependency)
-- **Navigation:** `nav2-msgs`, `nav2-simple-commander`, `slam-toolbox`, `cartographer-ros-msgs` for occupancy-grid mapping and goal navigation
+- **Robotics / middleware:** ROS 2 (`rclpy`, `ros2cli` tooling), `rosbridge-suite` for the WebSocket bridge to the robot, `unitree_go`/`unitree_api`/`unitree_hg` message packages, and the [`unitree_sdk2_python`](https://github.com/unitreerobotics/unitree_sdk2_python) SDK (does not need seperate install, requirements.txt alread has it as an editable Git dependency)
+- **Navigation:** `nav2-msgs`, `nav2-simple-commander`, `slam-toolbox`, `cartographer-ros-msgs` for occupancy-grid mapping and goal navigation. You may choose any code you like. I used following repo [`go2_slam_nav2`] (https://github.com/andy-zhuo-02/go2_ros2_toolbox)
 - **Web UI:** `gradio` (v6.x) and `gradio_client` for the browser interface; `fastapi` / `starlette` / `uvicorn` underneath
 - **Computer vision:** `opencv-python`, `ultralytics` (YOLO) for object detection, `torch` / `torchvision`
 - **LLM / agent layer:** `litellm` (unified model API), `openai`, `ollama` (Python client), and `mcp` (the official Model Context Protocol SDK) for the agent-facing tool server
@@ -137,7 +136,9 @@ Based on the project's pinned `requirements.txt`, the portal is built on:
 - **ROS 2 Humble** or later
 - **Python 3.10+**
 - **Unitree ROS 2 SDK** — [unitreerobotics/unitree_ros2](https://github.com/unitreerobotics/unitree_ros2), installed and sourced
-- **rosbridge_suite** running and reachable (default `127.0.0.1:9090`)
+- **rosbridge_suite** (```bash
+ros2 launch rosbridge_server rosbridge_websocket_launch.xml
+```) (if you run it on laptop you can find it on `127.0.0.1:9090`)
 - **Nav2** (optional — required only for autonomous waypoint navigation)
 - **Intel RealSense ROS 2 package** installed on the Go2 (optional — required only for the RealSense RGB/Depth tab)
 - **Ollama** (optional — for local LLM inference instead of Azure OpenAI)
@@ -338,19 +339,6 @@ LLM_PROMPT = "Describe the scene and highlight any hazards."
 
 ---
 
-## Troubleshooting
-
-| Problem | Solution |
-|---|---|
-| No camera image | Check `CAMERA_TOPIC_NAME` matches an active ROS topic (`ros2 topic list`) |
-| Map not loading | Verify the `/map` topic is publishing and the `MAP` config value is correct |
-| LLM not responding | Check `LLM_MODE`, credentials/`.env`, and that Ollama is running if using local mode |
-| Robot not moving | Confirm `CMD_VEL_PUB_TOPIC_NAME` and `CMD_VEL_PUB_TOPIC_TYPE` match your robot's actual command topic/message type |
-| Port 7860 already in use | Change `server_port` in the `demo.launch()` call in `main.py` |
-| ROS node errors on startup | Make sure both ROS 2 and the Unitree setup script are sourced in the same shell before running `python main.py` |
-| RealSense tab blank | Confirm the RealSense ROS 2 package is installed and publishing on the Go2 |
-
----
 
 ## License & Acknowledgements
 
