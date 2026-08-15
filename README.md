@@ -92,7 +92,7 @@ The robot connects to the host machine via **rosbridge** (default `127.0.0.1:909
 Based on the project's pinned `requirements.txt`, the portal is built on:
 
 - **Robotics / middleware:** ROS 2 (`rclpy`, `ros2cli` tooling), `rosbridge-suite` for the WebSocket bridge to the robot, `unitree_go`/`unitree_api`/`unitree_hg` message packages, and the [`unitree_sdk2_python`](https://github.com/unitreerobotics/unitree_sdk2_python) SDK (does not need seperate install, requirements.txt alread has it as an editable Git dependency)
-- **Navigation:** `nav2-msgs`, `nav2-simple-commander`, `slam-toolbox`, `cartographer-ros-msgs` for occupancy-grid mapping and goal navigation. You may choose any code you like. I used following repo [`go2_slam_nav2`] (https://github.com/andy-zhuo-02/go2_ros2_toolbox)
+- **Navigation:** `nav2-msgs`, `nav2-simple-commander`, `slam-toolbox`, `cartographer-ros-msgs` for occupancy-grid mapping and goal navigation. You may choose any code you like. I used following repo [`go2_slam_nav2`](https://github.com/andy-zhuo-02/go2_ros2_toolbox)
 - **Web UI:** `gradio` (v6.x) and `gradio_client` for the browser interface; `fastapi` / `starlette` / `uvicorn` underneath
 - **Computer vision:** `opencv-python`, `ultralytics` (YOLO) for object detection, `torch` / `torchvision`
 - **LLM / agent layer:** `litellm` (unified model API), `openai`, `ollama` (Python client), and `mcp` (the official Model Context Protocol SDK) for the agent-facing tool server
@@ -164,7 +164,7 @@ Rather than hard-coding credentials in `config.py`, create a `.env` file:
 AZURE_API_KEY=your_key_here
 ```
 
-`config.py` already includes a warning that hard-coded keys are unsafe — load them via `python-dotenv` instead:
+`config.py` hard-coded keys are unsafe — load them via `python-dotenv` instead:
 
 ```python
 from dotenv import load_dotenv
